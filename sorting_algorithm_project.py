@@ -71,7 +71,7 @@ def randomized_quicksort(arr, left, right):
 
 
 
-""" Time function """
+""" Time function for Insertion Sort """
 
 # make a random list with 1000 numbers between 0 and 10000
 arr = []
@@ -94,9 +94,34 @@ print("Insertion Sort runtime (ms):", round(runtime_ms, 2))
 
 
 
+""" Time function for Randomized Quicksort"""
 
-        
+# make a random list with 1000 numbers between 0 and 10000
+arr = []
+for i in range(1000):
+    arr.append(random.randint(0, 10000))
 
+# start timer
+start = time.perf_counter()
+
+# run the sorting algorithm
+randomized_quicksort(arr, 0, len(arr) - 1)
+
+# stop timer
+end = time.perf_counter()
+
+# calculate runtime in milliseconds
+runtime_ms = (end - start) * 1000
+
+print("Randomized Quicksort runtime (ms):", round(runtime_ms, 2))
+
+
+
+""" Main Function for Sorting Algorithms"""
+
+def tests_for_algorithms():
+    n = [0, 100, 1000, 2000, 5000, 10000, 20000]
+    
 
 
     
