@@ -46,7 +46,7 @@ def partition(arr, left, right):
 
     pivot = arr[right]
     i = left - 1
-    
+
     for j in range(left, right):
         if arr[j] <= pivot:
             i += 1
@@ -71,47 +71,75 @@ def randomized_quicksort(arr, left, right):
 
 
 
+def median_of_five(values):
+    # sort the 5 runtimes and take the middle one
+    s = sorted(values)
+    return s[2]
+
+
 def main():
 
-    sizes = [10, 100, 1000, 2000, 5000, 10000, 20000]
+    # Different input sizes for testing runtime
+    n = [10, 100, 1000, 2000, 5000, 10000, 20000]
 
-    for n in sizes:
+    # Loop through all sizes
+    for i in n:
+
         # Insertion Sort
-        arr = []
-        for trial in range(5):
-            arr.append(random.randint(0, 10000))
+        ins_trials = []  
 
-        # Start time
-        start = time.perf_counter()
+        for trial in range(5):  # run 5 trials
+            # make a random list with n numbers between 0 and 10000
+            arr = []
+            for k in range(i):
+                arr.append(random.randint(0, 10000))
 
-        # Run algorithm 
-        insertion_sort(arr)
+            # start timer
+            start = time.perf_counter()
 
-        # End time
-        end = time.perf_counter()
+            # run the sorting algorithm
+            insertion_sort(arr)
 
-        # Milleseconds 
-        runtime_ms = (end - start) * 1000
-        print("n =", n, "Insertion Sort runtime (ms):", round(runtime_ms, 2))
+            # stop timer
+            end = time.perf_counter()
+
+            # calculate runtime in milliseconds
+            runtime_ms = (end - start) * 1000
+            ins_trials.append(runtime_ms)
+
+        # find median of 5 runtimes
+        ins_median = median_of_five(ins_trials)
+        print("n =", n, "Insertion Sort median runtime (ms):", round(ins_median, 2))
+
+
+
 
         # Randomized Quicksort
-        arr = []
-        for trial in range(5):
-            arr.append(random.randint(0, 10000))
+        qs_trials = []  
 
-        # Start Time 
-        start = time.perf_counter()
+        for trial in range(5):  # run 5 trials
+            # make a random list with n numbers between 0 and 10000
+            arr = []
+            for k in range(i):
+                arr.append(random.randint(0, 10000))
 
-        # Run algorithm
-        randomized_quicksort(arr, 0, len(arr) - 1)
+            # start timer
+            start = time.perf_counter()
 
-        # End time 
-        end = time.perf_counter()
+            # run the sorting algorithm
+            randomized_quicksort(arr, 0, len(arr) - 1)
 
+            # stop timer
+            end = time.perf_counter()
 
-        runtime_ms = (end - start) * 1000
-        print("n =", n, "Randomized Quicksort runtime (ms):", round(runtime_ms, 2))
+            # calculate runtime in milliseconds
+            runtime_ms = (end - start) * 1000
+            qs_trials.append(runtime_ms)
+
+        # find median of 5 runtimes
+        qs_median = median_of_five(qs_trials)
+        print("n =", n, "Randomized Quicksort median runtime (ms):", round(qs_median, 2))
+
 
 if __name__ == "__main__":
     main()
-
