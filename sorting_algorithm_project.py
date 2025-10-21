@@ -8,11 +8,9 @@ Description:
 
 """
 
-
 import random
 import time
 import matplotlib.pyplot as plt
-
 
 
 
@@ -20,12 +18,12 @@ import matplotlib.pyplot as plt
 
 def insertion_sort(arr):
     # Number of elements in array
-    n = len(arr) 
+    n = len(arr)
 
     # Already sorted array
     if n <= 1:
         return
-    
+
     # Loop through the array starting from the 2nd element
     for i in range(1, n):
         key = arr[i]
@@ -33,7 +31,7 @@ def insertion_sort(arr):
 
         # Shift elements that are greater than 'key' to one position ahead
         while j >= 0 and key < arr[j]:
-            arr[j + 1] = arr[j]   #
+            arr[j + 1] = arr[j]
             j -= 1
 
         # Insert key
@@ -41,9 +39,11 @@ def insertion_sort(arr):
 
 
 
+
 """ Randomize Quicksort Implementation"""
 
 def partition(arr, left, right):
+
     pivot = arr[right]
     i = left - 1
     
@@ -52,9 +52,9 @@ def partition(arr, left, right):
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
 
-        arr[i + 1], arr[right] = arr[right], arr[i + 1]
-
+    arr[i + 1], arr[right] = arr[right], arr[i + 1]
     return i + 1
+
 
 def randomize_partition(arr, left, right):
     pivot_index = random.randint(left, right)
@@ -78,7 +78,7 @@ def main():
     for n in sizes:
         # Insertion Sort
         arr = []
-        for i in range(n):
+        for trial in range(5):
             arr.append(random.randint(0, 10000))
 
         # Start time
@@ -96,7 +96,7 @@ def main():
 
         # Randomized Quicksort
         arr = []
-        for i in range(n):
+        for trial in range(5):
             arr.append(random.randint(0, 10000))
 
         # Start Time 
@@ -115,8 +115,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-
-
-
-
-    
