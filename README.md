@@ -1,5 +1,11 @@
 # Empirical Analyses of Sorting Algorithms
 
+
+**Author:** Adam Pinkos   
+**Course:** CS 4040 – Design and Analysis of Algorithms  
+**Instructor:** Dr. Majid Mirzanezhad  
+**Date:** October 21st, 2025 
+
 ## 📘 Overview
 This project is part of **CS 4040 – Design and Analysis of Algorithms**.  
 It explores the **empirical runtime behavior** of sorting algorithms by implementing, timing, and later visualizing their performance.
