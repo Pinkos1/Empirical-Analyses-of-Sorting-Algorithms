@@ -43,7 +43,6 @@ def insertion_sort(arr):
 
 """ Randomize Quicksort Implementation"""
 
-
 def partition(arr, left, right):
     pivot = arr[right]
     i = left - 1
@@ -57,15 +56,11 @@ def partition(arr, left, right):
 
     return i + 1
 
-
-
 def randomize_partition(arr, left, right):
     pivot_index = random.randint(left, right)
     arr[pivot_index], arr[right] = arr[right], arr[pivot_index]  
 
     return partition(arr, left, right)
-
-
 
 def randomized_quicksort(arr, left, right):
     if left < right:
@@ -73,6 +68,32 @@ def randomized_quicksort(arr, left, right):
         
         randomized_quicksort(arr, left, pivot_index - 1)
         randomized_quicksort(arr, pivot_index + 1, right)
+
+
+
+""" Time function """
+
+# make a random list with 1000 numbers between 0 and 10000
+arr = []
+for i in range(1000):
+    arr.append(random.randint(0, 10000))
+
+# start timer
+start = time.perf_counter()
+
+# run the sorting algorithm
+insertion_sort(arr)
+
+# stop timer
+end = time.perf_counter()
+
+# calculate runtime in milliseconds
+runtime_ms = (end - start) * 1000
+
+print("Insertion Sort runtime (ms):", round(runtime_ms, 2))
+
+
+
 
         
 
