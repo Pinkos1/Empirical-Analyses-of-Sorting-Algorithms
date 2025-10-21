@@ -73,59 +73,49 @@ def randomized_quicksort(arr, left, right):
 
 def main():
 
-    n = [0, 100, 1000, 2000, 5000, 10000, 20000]
+    sizes = [10, 100, 1000, 2000, 5000, 10000, 20000]
 
-    ## Insertion Sort 
-    for i in n:
+    for n in sizes:
+        # Insertion Sort
         arr = []
-        for i in range(1000):
+        for i in range(n):
             arr.append(random.randint(0, 10000))
-    
-        # start timer
-        start = time.perf_counter()
-        
-        # run the sorting algorithm
-        insertion_sort(arr)
-        
-        # stop timer
-        end = time.perf_counter()
-        runtime_ms = (end - start) * 1000
 
+        # Start time
+        start = time.perf_counter()
+
+        # Run algorithm 
+        insertion_sort(arr)
+
+        # End time
+        end = time.perf_counter()
+
+        # Milleseconds 
+        runtime_ms = (end - start) * 1000
         print("n =", n, "Insertion Sort runtime (ms):", round(runtime_ms, 2))
 
+        # Randomized Quicksort
+        arr = []
+        for i in range(n):
+            arr.append(random.randint(0, 10000))
+
+        # Start Time 
+        start = time.perf_counter()
+
+        # Run algorithm
+        randomized_quicksort(arr, 0, len(arr) - 1)
+
+        # End time 
+        end = time.perf_counter()
 
 
-""" Time function for Randomized Quicksort"""
+        runtime_ms = (end - start) * 1000
+        print("n =", n, "Randomized Quicksort runtime (ms):", round(runtime_ms, 2))
 
-# make a random list with 1000 numbers between 0 and 10000
-arr = []
-for i in range(1000):
-    arr.append(random.randint(0, 10000))
-
-# start timer
-start = time.perf_counter()
-
-# run the sorting algorithm
-randomized_quicksort(arr, 0, len(arr) - 1)
-
-# stop timer
-end = time.perf_counter()
-
-# calculate runtime in milliseconds
-runtime_ms = (end - start) * 1000
-
-print("Randomized Quicksort runtime (ms):", round(runtime_ms, 2))
+if __name__ == "__main__":
+    main()
 
 
-
-""" Main Function for Sorting Algorithms"""
-
-def tests_for_algorithms():
-    n = [0, 100, 1000, 2000, 5000, 10000, 20000]
-
-    # Insertion Sort time
-    for i in n:
-        insertion_sort_time = run_time_ins(i) 
 
 
 
