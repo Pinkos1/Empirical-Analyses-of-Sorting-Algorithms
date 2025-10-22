@@ -5,7 +5,7 @@
 @author Adam Pinkos
 @date October 21, 2025
 @course CS 4040 – Design and Analysis of Algorithms
-@project Project 1 – Sorting Algorithm Runtime Analysis
+@project Milestone 1 – Sorting Algorithm Runtime Analysis
 
 @details
 This file contains the implementation of the Randomized Quicksort algorithm.

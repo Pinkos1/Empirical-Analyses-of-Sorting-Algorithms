@@ -1,12 +1,19 @@
 """
-CS 4040 – Design and Analysis of Algorithms
-Project 1 – Sorting Algorithm Runtime Analysis
-Author: Adam Pinkos
-Date: October 21st, 2025
+@file main_runtime.py
+@brief Runs empirical runtime tests for Insertion Sort and Randomized Quicksort.
 
-Description:
+@author Adam Pinkos
+@date October 21, 2025
+@course CS 4040 – Design and Analysis of Algorithms
+@project Milestone 1 – Sorting Algorithm Runtime Analysis
 
+@details
+This file acts as the main driver program for analyzing the performance of
+Insertion Sort and Randomized Quicksort. 
 """
+
+
+
 import random
 import time
 import matplotlib.pyplot as plt
@@ -14,14 +21,25 @@ from insertion_sort import insertion_sort
 from randomized_quicksort import randomized_quicksort
 
 def median_of_five(values):
-    # Sort the 5 runtimes and take the middle one
+    """
+    @brief Calculates the median of a list of five runtime values.
+    @param values A list containing five numeric runtime measurements.
+    @return The median value from the list.
+
+    """
     s = sorted(values)
     return s[2]
 
 def main():
+    """
+    @brief Main function for runtime testing.
+    @details
+    This function executes multiple trials of both sorting algorithms,
+    records their runtimes, prints the median runtimes, and generates
+    a comparison plot.
 
-
-    # warm up before timing 
+    """
+    # Warm up before timing 
     nums = []
     for i in range(500):
         nums.append(random.randint(0, 10000))
@@ -45,26 +63,26 @@ def main():
         # Insertion Sort
         ins_trials = []
 
-        for trial in range(5):  # run 5 trials
-            # make a random list with n numbers between 0 and 10000
+        for trial in range(5): 
+            # Make a random list with n numbers between 0 and 10000
             arr = []
             for k in range(i):
                 arr.append(random.randint(0, 10000))
 
-            # start timer
+            # Start timer
             start = time.perf_counter()
 
-            # run the sorting algorithm
+            # Run the sorting algorithm
             insertion_sort(arr)
 
-            # stop timer
+            # Stop timer
             end = time.perf_counter()
 
-            # calculate runtime in milliseconds
+            # Calculate runtime in milliseconds
             runtime_ms = (end - start) * 1000
             ins_trials.append(runtime_ms)
 
-        # find median of 5 runtimes
+        # Find median of 5 runtimes
         ins_median = median_of_five(ins_trials)
         print("n =", i, "Insertion Sort median runtime (ms):", round(ins_median, 2))
         ins_medians.append(ins_median)
@@ -72,26 +90,26 @@ def main():
         # Randomized Quicksort
         qs_trials = []
 
-        for trial in range(5):  # run 5 trials
-            # make a random list with n numbers between 0 and 10000
+        for trial in range(5):  
+            # Make a random list with n numbers between 0 and 10000
             arr = []
             for k in range(i):
                 arr.append(random.randint(0, 10000))
 
-            # start timer
+            # Start timer
             start = time.perf_counter()
 
-            # run the sorting algorithm
+            # Run the sorting algorithm
             randomized_quicksort(arr, 0, len(arr) - 1)
 
-            # stop timer
+            # Stop timer
             end = time.perf_counter()
 
-            # calculate runtime in milliseconds
+            # Calculate runtime in milliseconds
             runtime_ms = (end - start) * 1000
             qs_trials.append(runtime_ms)
 
-        # find median of 5 runtimes
+        # Find median of 5 runtimes
         qs_median = median_of_five(qs_trials)
         print("n =", i, "Randomized Quicksort median runtime (ms):", round(qs_median, 2))
         qs_medians.append(qs_median)
@@ -122,10 +140,16 @@ def main():
 
 
 
-""" Test functions for sorting algorithms """
 
 def TestMe_InsertionSort():
-    # makes random list 
+
+    """
+    @brief Test function for verifying Insertion Sort.
+    @details
+    Generates a small random list and compares the output of
+    insertion_sort() with Python's built-in sorted() function.
+
+    """
     arr = []
     for i in range(20):
         arr.append(random.randint(0,100))
@@ -140,7 +164,13 @@ def TestMe_InsertionSort():
 
 
 def TestMe_RandomizedQuicksort():
-    
+    """
+    @brief Test function for verifying Randomized Quicksort.
+    @details
+    Generates a small random list and compares the output of
+    randomized_quicksort() with Python's built-in sorted() function.
+
+    """
     arr = []
     for i in range(20):
         arr.append(random.randint(0,100))
