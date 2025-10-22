@@ -65,6 +65,18 @@ n = 1000 Insertion Sort median runtime (ms): 27.41
 n = 1000 Randomized Quicksort median runtime (ms): 2.13
 
 
+ 
+## Documentation 
+
+To build Doxygen docs:
+
+``bash
+doxygen Doxyfile
+
+
+
+
+
 ## Takeaways ##
 This project helped me understand how sorting algorithms perform differently as the input size grows.
 Insertion Sort was slower for large lists, but Randomized Quicksort stayed fast.
