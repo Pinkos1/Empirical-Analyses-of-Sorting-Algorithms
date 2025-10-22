@@ -70,12 +70,8 @@ n = 1000 Randomized Quicksort median runtime (ms): 2.13
 
 To build Doxygen docs:
 
-``bash
 
 doxygen Doxyfile
-
-
-
 
 
 ## Takeaways ##
