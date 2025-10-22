@@ -7,22 +7,22 @@ Date: October 21st, 2025
 Description:
 
 """
-
 import random
 import time
 import matplotlib.pyplot as plt
 from insertion_sort import insertion_sort
 from randomized_quicksort import randomized_quicksort
 
-
-
 def median_of_five(values):
     # Sort the 5 runtimes and take the middle one
     s = sorted(values)
     return s[2]
 
-
 def main():
+
+    # Store the median trials
+    ins_medians = []
+    qs_medians = []
 
     # Different input sizes for testing runtime
     n = [10, 100, 1000, 2000, 5000, 10000, 20000]
@@ -31,7 +31,7 @@ def main():
     for i in n:
 
         # Insertion Sort
-        ins_trials = []  
+        ins_trials = []
 
         for trial in range(5):  # run 5 trials
             # make a random list with n numbers between 0 and 10000
@@ -54,13 +54,11 @@ def main():
 
         # find median of 5 runtimes
         ins_median = median_of_five(ins_trials)
-        print("n =", n, "Insertion Sort median runtime (ms):", round(ins_median, 2))
-
-
-
+        print("n =", i, "Insertion Sort median runtime (ms):", round(ins_median, 2))
+        ins_medians.append(ins_median)
 
         # Randomized Quicksort
-        qs_trials = []  
+        qs_trials = []
 
         for trial in range(5):  # run 5 trials
             # make a random list with n numbers between 0 and 10000
@@ -83,7 +81,31 @@ def main():
 
         # find median of 5 runtimes
         qs_median = median_of_five(qs_trials)
-        print("n =", n, "Randomized Quicksort median runtime (ms):", round(qs_median, 2))
+        print("n =", i, "Randomized Quicksort median runtime (ms):", round(qs_median, 2))
+        qs_medians.append(qs_median)
+
+
+
+    # Graph to plot median runtimes 
+    fig, ax = plt.subplots(figsize = (6, 5))      
+
+    # Plot both algorithms
+    ax.plot(n, ins_medians, marker = 'o', color = 'Blue', linewidth = 2, label='Insertion Sort')
+    ax.plot(n, qs_medians, marker = 'o', color = 'Orange', linewidth = 2, label = 'Randomized Quicksort')
+
+    # Labels and title
+    ax.set_xlabel('Input Size (n)', fontsize = 11, fontweight = 'bold')
+    ax.set_ylabel('Median Runtime (ms)', fontsize = 11, fontweight = 'bold')
+    ax.set_title('Runtime Comparison: Insertion Sort vs. Randomized Quicksort',
+                 fontsize = 13, fontweight = 'bold', pad = 15)
+
+    # Grid, legend, and layout tweaks
+    ax.grid(True, linestyle = '--', linewidth = 0.6, alpha = 0.7)
+    ax.legend(facecolor = 'white', framealpha = 1, edgecolor = 'black')
+    plt.tight_layout()
+
+    plt.show()
+
 
 
 if __name__ == "__main__":
