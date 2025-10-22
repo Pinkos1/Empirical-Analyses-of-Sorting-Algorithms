@@ -1,15 +1,18 @@
+"""
+@file insertion_sort.py
 
-""""
+@author Adam Pinkos
+@date October 21, 2025
+@course CS 4040 – Design and Analysis of Algorithms
+@project Project 1 – Sorting Algorithm Runtime Analysis
 
-CS 4040 – Design and Analysis of Algorithms
-Project 1 – Sorting Algorithm Runtime Analysis
-Author: Adam Pinkos
-Date: October 21st, 2025
-File: insertion_sort.py
-
-Description:
+@details
+This file contains the implementation of the Insertion Sort algorithm.
+Insertion Sort works by building a sorted portion of the array one element
+at a time, inserting each new element into its correct position.
 
 """
+
 
 
 

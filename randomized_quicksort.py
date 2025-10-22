@@ -1,13 +1,20 @@
+"""
+@file randomized_quicksort.py
+@brief Implements the Randomized Quicksort algorithm used for runtime analysis.
 
-""""
-CS 4040 – Design and Analysis of Algorithms
-Project 1 – Sorting Algorithm Runtime Analysis
-Author: Adam Pinkos
-Date: October 21st, 2025
-File: randomized_quicksort.py
+@author Adam Pinkos
+@date October 21, 2025
+@course CS 4040 – Design and Analysis of Algorithms
+@project Project 1 – Sorting Algorithm Runtime Analysis
 
-Description:
-
+@details
+This file contains the implementation of the Randomized Quicksort algorithm.
+It includes three main functions: partition(), randomize_partition(), and
+randomized_quicksort(). The algorithm works by choosing a random pivot element,
+partitioning the array around that pivot, and then recursively sorting the
+left and right subarrays. Randomization helps avoid worst-case performance on
+already sorted or patterned datasets, achieving an average-case runtime of
+O(n log n).
 """
 
 import random
