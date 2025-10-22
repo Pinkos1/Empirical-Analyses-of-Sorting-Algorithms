@@ -68,7 +68,12 @@ n = 100 Randomized Quicksort median runtime (ms): 0.09
 n = 1000 Insertion Sort median runtime (ms): 27.41
 
 n = 1000 Randomized Quicksort median runtime (ms): 2.13
-...
+
+
+## Takeaways ##
+This project helped me understand how sorting algorithms perform differently as the input size grows.
+Insertion Sort was slower for large lists, but Randomized Quicksort stayed fast.
+I learned how to measure runtimes, plot results, and see the difference between O(n²) and O(n log n) in real code.
 
 
 
