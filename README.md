@@ -8,7 +8,7 @@
 
 # Overview
 This project is part of **CS 4040 – Design and Analysis of Algorithms**.  
-It explores the **empirical runtime behavior** of sorting algorithms by implementing, timing, and later visualizing their performance.git pull --rebase origin main
+It explores the **empirical runtime behavior** of sorting algorithms by implementing, timing, and visualizing their performance.
 
 - Insertion Sort
 - Randomized Quicksort
