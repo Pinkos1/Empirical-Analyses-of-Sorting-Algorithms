@@ -142,7 +142,6 @@ def main():
 
 
 def TestMe_InsertionSort():
-
     """
     @brief Test function for verifying Insertion Sort.
     @details
@@ -153,14 +152,11 @@ def TestMe_InsertionSort():
     arr = []
     for i in range(20):
         arr.append(random.randint(0,100))
-
     sorted_arr = sorted(arr)
+    
     insertion_sort(arr)
-
-    if arr == sorted_arr:
-        print("Insertion Sort Tests Passed")
-    else:
-        print("Insertion Sort failed")
+    assert arr == sorted_arr, "Insertion Sort failed"   
+    print("Insertion Sort Tests Passed")
 
 
 def TestMe_RandomizedQuicksort():
@@ -177,11 +173,8 @@ def TestMe_RandomizedQuicksort():
 
     sorted_arr = sorted(arr)
     randomized_quicksort(arr, 0, len(arr)-1)
-
-    if arr == sorted_arr:
-        print("Randomized Quicksort Tests Pass")
-    else:
-        print("Randomized Quicksort failed")
+    assert arr == sorted_arr, "Randomized Quicksort failed"  # required assert
+    print("Randomized Quicksort Tests Pass")
 
 
 if __name__ == "__main__":
