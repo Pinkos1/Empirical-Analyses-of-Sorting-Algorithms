@@ -62,8 +62,11 @@ When you run the program, the console shows something like:
 
 
 n = 100 Insertion Sort median runtime (ms): 0.53
+
 n = 100 Randomized Quicksort median runtime (ms): 0.09
+
 n = 1000 Insertion Sort median runtime (ms): 27.41
+
 n = 1000 Randomized Quicksort median runtime (ms): 2.13
 ...
 
