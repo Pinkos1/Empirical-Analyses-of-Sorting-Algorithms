@@ -15,7 +15,14 @@ import random
 """ Randomize Quicksort Implementation"""
 
 def partition(arr, left, right):
+    """
+    @brief partition using arr[right] as pivot.
+    @param arr List to partition.
+    @param left Left index.
+    @param right Right index.
+    @return int Final pivot index.
 
+    """
     pivot = arr[right]
     i = left - 1
 
@@ -29,12 +36,28 @@ def partition(arr, left, right):
 
 
 def randomize_partition(arr, left, right):
+    """
+    @brief Picks a random pivot index, swaps to end, then partitions.
+    @param arr List to partition.
+    @param left Left index.
+    @param right Right index.
+    @return int Final pivot index.
+
+    """
     pivot_index = random.randint(left, right)
     arr[pivot_index], arr[right] = arr[right], arr[pivot_index]  
 
     return partition(arr, left, right)
 
 def randomized_quicksort(arr, left, right):
+    """
+    @brief Recursive randomized quicksort.
+    @param arr List to sort.
+    @param left Starting index of subarray.
+    @param right Ending index of subarray.
+    @return None
+
+    """
     if left < right:
         pivot_index = randomize_partition(arr, left, right)
         

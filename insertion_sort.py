@@ -12,9 +12,16 @@ Description:
 """
 
 
-"""Insertion Sort Implementation"""
+
+
+
 def insertion_sort(arr):
-    # Number of elements in array
+    """"
+    @brief In-place insertion sort.
+    @param arr List of elements to sort.
+    @return None
+    
+    """
     n = len(arr)
 
     # Already sorted array
