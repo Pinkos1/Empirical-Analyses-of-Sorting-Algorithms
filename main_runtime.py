@@ -10,8 +10,8 @@ Description:
 import random
 import time
 import matplotlib.pyplot as plt
-from Project_milestone_1.insertion_sort import insertion_sort
-from Project_milestone_1.randomized_quicksort import randomized_quicksort
+from insertion_sort import insertion_sort
+from randomized_quicksort import randomized_quicksort
 
 def median_of_five(values):
     # Sort the 5 runtimes and take the middle one
@@ -19,6 +19,18 @@ def median_of_five(values):
     return s[2]
 
 def main():
+
+
+    # warm up before timing 
+    nums = []
+    for i in range(500):
+        nums.append(random.randint(0, 10000))
+        insertion_sort(nums)
+
+    nums = []
+    for i in range(500):
+        nums.append(random.randint(0, 10000))
+        randomized_quicksort(nums, 0, len(nums) - 1)
 
     # Store the median trials
     ins_medians = []
