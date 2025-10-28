@@ -41,14 +41,10 @@ def main():
     """
     # Warm up before timing 
     nums = []
-    for i in range(500):
+    for i in range(10):
         nums.append(random.randint(0, 10000))
         insertion_sort(nums)
 
-    nums = []
-    for i in range(500):
-        nums.append(random.randint(0, 10000))
-        randomized_quicksort(nums, 0, len(nums) - 1)
 
     # Store the median trials
     ins_medians = []
@@ -133,6 +129,11 @@ def main():
     ax.grid(True, linestyle = '--', linewidth = 0.6, alpha = 0.7)
     ax.legend(facecolor = 'white', framealpha = 1, edgecolor = 'black')
     plt.tight_layout()
+
+    plt.text(2000, max(qs_medians) * 0.6,
+             "Insertion Sort grows much slower for small n,\n"
+             "but Randomized Quicksort scales better for large inputs.",
+             fontsize=9, bbox=dict(facecolor='white', alpha=0.6))
 
     plt.show()
 
