@@ -129,10 +129,10 @@ def main():
     plt.grid(True)
 
 
-    plt.text(0.25, -0.25,
+    plt.text(0.5, -0.25,
              "For smaller k (k=10), runtime increases almost linearly with n.\n"
              "For larger k (k=n² or n), runtime rises sharply due to the larger counting array.",
-             fontsize = 10, ha = 'center', va = 'center')
+             fontsize = 10, ha = 'center', va = 'center', transform=plt.gca().transAxes)
 
     plt.tight_layout()
     plt.show()
