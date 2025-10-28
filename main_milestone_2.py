@@ -138,5 +138,32 @@ def main():
     plt.show()
 
 
+
+def TestMe_counting_sort():
+    """
+    @brief Test function for verifying Counting Sort.
+    @details
+    Generates a small random list and compares the output of
+    counting_sort() with Python's built-in sorted() function.
+    This ensures that Counting Sort produces the correct order.
+    """
+    arr = []
+
+    # Max value in array
+    k = 50 
+    for i in range(20):
+        arr.append(random.randint(0, k))
+
+    # Expected sorted array 
+    expected = sorted(arr)
+
+    result = counting_sort(arr, k)
+
+    # Verify output matches the expected result
+    assert result == expected, "Counting Sort failed"
+    print("Counting Sort Tests Passed")
+
+
 if __name__ == "__main__":
     main()
+    TestMe_counting_sort
