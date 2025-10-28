@@ -1,5 +1,4 @@
 
-
 """
 @file main_milestone_2.py
 
@@ -31,16 +30,6 @@ def median_of_five(values):
 
 
 
-def median_of_five(values):
-    """
-    @brief Calculates the median of a list of five runtime values.
-    @param values A list containing five numeric runtime measurements.
-    @return The median value from the list.
-    """
-    s = sorted(values)
-    return s[2]  # middle value after sorting
-
-
 def main():
 
     cs_medians = []
@@ -54,6 +43,8 @@ def main():
         # Two different values for k 
         k_values = [10, size]
         k_squared = size * size
+        if k_squared <= 1000000:  # max K
+            k_values.append(k_squared)
     
 
         # Run the experiments for each k value
@@ -63,7 +54,7 @@ def main():
 
             # Run 5 trials
             for trial in range(5):
-                
+
                 # Make a random array with numbers between 0 and k
                 arr = []
                 for i in range(size):
@@ -90,6 +81,9 @@ def main():
 
             # Save results if needed later for plotting
             cs_medians.append((size, k, median_time))
+
+
+
 
 
 if __name__ == "__main__":
