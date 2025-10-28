@@ -38,7 +38,7 @@ def main():
     # Different input sizes for testing runtime
     n = [10, 100, 1000, 2000, 5000, 10000, 20000]
 
-
+    # Choose K values
     for i in n:
         k_value = [10, i]
         k_squared = i * i
@@ -46,21 +46,29 @@ def main():
 
         for k in k_value:
             cs_trials = []
-
+            
+            # Run 5 trials 
             for trial in range(5):
-                arr = []
+                arr = [] # Make a random array with numbers between 0 and k
                 for i in range(n):
                     arr.append(random.randint(0, k))
-                
+
+                # Start time
                 start = time.perf_counter()
 
+                # Call counting sort 
                 counting_sort(arr, k)
 
+                # End time
                 end = time.perf_counter()
 
+                # End runtime
                 runtime_ms = (end - start) * 1000
                 cs_trials.append(runtime_ms)
 
+                # Get median time
                 median_time = median_of_five(cs_trials)
+
+            
         
     
