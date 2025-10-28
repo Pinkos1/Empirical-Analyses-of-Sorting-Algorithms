@@ -31,44 +31,66 @@ def median_of_five(values):
 
 
 
+def median_of_five(values):
+    """
+    @brief Calculates the median of a list of five runtime values.
+    @param values A list containing five numeric runtime measurements.
+    @return The median value from the list.
+    """
+    s = sorted(values)
+    return s[2]  # middle value after sorting
+
+
 def main():
 
     cs_medians = []
 
-    # Different input sizes for testing runtime
+    # Input sizes 
     n = [10, 100, 1000, 2000, 5000, 10000, 20000]
 
-    # Choose K values
-    for i in n:
-        k_value = [10, i]
-        k_squared = i * i
+    # Loop through each input size
+    for size in n:
 
+        # Two different values for k 
+        k_values = [10, size]
+        k_squared = size * size
+    
 
-        for k in k_value:
+        # Run the experiments for each k value
+        for k in k_values:
+            print("  k =", k)
             cs_trials = []
-            
-            # Run 5 trials 
+
+            # Run 5 trials
             for trial in range(5):
-                arr = [] # Make a random array with numbers between 0 and k
-                for i in range(n):
+                
+                # Make a random array with numbers between 0 and k
+                arr = []
+                for i in range(size):
                     arr.append(random.randint(0, k))
 
-                # Start time
+                # Start timer
                 start = time.perf_counter()
 
-                # Call counting sort 
+                # Run Counting Sort
                 counting_sort(arr, k)
 
-                # End time
+                # End timer
                 end = time.perf_counter()
 
-                # End runtime
+                # Calculate runtime in milliseconds
                 runtime_ms = (end - start) * 1000
                 cs_trials.append(runtime_ms)
 
-                # Get median time
-                median_time = median_of_five(cs_trials)
+            # Compute median of 5 trials
+            median_time = median_of_five(cs_trials)
 
-            
-        
-    
+            # Print the median runtime for this (n, k)
+            print("    Median runtime:", round(median_time, 3), "ms")
+
+            # Save results if needed later for plotting
+            cs_medians.append((size, k, median_time))
+
+
+if __name__ == "__main__":
+    main()
