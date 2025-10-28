@@ -16,6 +16,13 @@ import time
 
 
 def counting_sort(arr, k):
+    """
+    @brief Sorts an array of non-negative integers using Counting Sort.
+    @param arr The list of integers to be sorted
+    @param k The maximum integer value in the array.
+    @return A new sorted list containing the same elements as arr.
+    """
+
     n = len(arr)
     x = [0] * n        
     y = [0] * (k + 1)  
