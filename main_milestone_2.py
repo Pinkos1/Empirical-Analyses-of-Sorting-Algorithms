@@ -95,6 +95,45 @@ def main():
 
 
 
+    # Graph to plot median runtimes 
+
+    # Create two lists for each k group
+    k10 = []
+    med_k10 = []
+    k_square = []
+    med_k_square = []
+
+    # Cycle through all results and separate them by k value
+    for row in cs_medians:
+        n_val = row[0]
+        k_val = row[1]
+        median_val = row[3]
+
+        if k_val == 10:
+            k10.append(n_val)
+            med_k10.append(median_val)
+        else:
+            k_square.append(n_val)
+            med_k_square.append(median_val)
+
+    # Make the graph
+    plt.figure(figsize = (6, 5))
+    plt.plot(k10, med_k10, marker = 'o', label = 'CountingSort (k=10)')
+    plt.plot(k_square, med_k_square, marker = 'o', label = 'CountingSort (k=n² or n)')
+
+    # Labels and title
+    plt.xlabel('Input Size (n)')
+    plt.ylabel('Median Runtime (ms)')
+    plt.title('Counting Sort Runtime (Milestone 2)')
+    plt.legend()
+    plt.grid(True)
+
+
+    plt.show()
+
+
+
+
 
 if __name__ == "__main__":
     main()
