@@ -39,12 +39,15 @@ def main():
 
     # Loop through each input size
     for size in n:
+        print("\nTesting CountingSort with n =", size)
+
 
         # Two different values for k 
-        k_values = [10, size]
         k_squared = size * size
-        if k_squared <= 1000000:  # max K
-            k_values.append(k_squared)
+        if k_squared <= 1_000_000:   # max K 
+            k_values = [10, k_squared]
+        else:
+            k_values = [10, size]
     
 
         # Run the experiments for each k value
@@ -79,8 +82,15 @@ def main():
             # Print the median runtime for this (n, k)
             print("    Median runtime:", round(median_time, 3), "ms")
 
-            # Save results if needed later for plotting
-            cs_medians.append((size, k, median_time))
+             # Save results for the final table: (n, k, Algorithm(params), median_ms)
+            cs_medians.append((size, k, f"CountingSort(k={k})", round(median_time, 3)))
+
+
+    print("\n=== Runtime Table (Median of 5 runs) ===")
+    print("{:>8}  {:>12}  {:<24}  {:>12}".format("n", "k (max)", "Algorithm (params)", "Median (ms)"))
+    for row in cs_medians:
+        n_val, k_val, algo, med = row
+        print("{:>8}  {:>12}  {:<24}  {:>12.3f}".format(n_val, k_val, algo, med))
 
 
 
