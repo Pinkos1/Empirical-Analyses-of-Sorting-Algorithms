@@ -37,18 +37,34 @@ def main():
     # Input sizes 
     n = [10, 100, 1000, 2000, 5000, 10000, 20000]
 
+
+    n_k10 = []
+    med_k10 = []
+
+    n_kn = []
+    med_kn = []
+
+    n_k2 = []
+    med_k2 = []
+
     # Loop through each input size
     for size in n:
         print("\nTesting CountingSort with n =", size)
 
 
-        # Two different values for k 
-        k_squared = size * size
-        if k_squared <= 1_000_000:   # max K 
-            k_values = [10, k_squared]
-        else:
-            k_values = [10, size]
-    
+         
+        # Three different values for k: 10, n, n²
+        k_10 = 10
+        k_n = size
+        k_n2 = size * size
+
+        # Cap k if it exceeds the limit
+        if k_n2 > 1_000_000:
+            print(f"  (Capped k² at 1,000,000 for n = {size})")
+            k_n2 = 1_000_000
+
+        k_values = [k_10, k_n, k_n2]
+
 
         # Run the experiments for each k value
         for k in k_values:
@@ -86,6 +102,19 @@ def main():
             cs_medians.append((size, k, f"CountingSort(k={k})", round(median_time, 3)))
 
 
+            if k == 10:
+                n_k10.append(size)
+                med_k10.append(round(median_time, 3))
+            elif k == size:
+                n_kn.append(size)
+                med_kn.append(round(median_time, 3))
+            else:
+                # treat as n^2 (possibly capped)
+                n_k2.append(size)
+                med_k2.append(round(median_time, 3))
+
+
+    # Table in the console 
     print("\n=== Runtime Table (Median of 5 runs) ===")
     print("{:>8}  {:>12}  {:<24}  {:>12}".format("n", "k (max)", "Algorithm (params)", "Median (ms)"))
     for row in cs_medians:
@@ -93,49 +122,7 @@ def main():
         print("{:>8}  {:>12}  {:<24}  {:>12.3f}".format(n_val, k_val, algo, med))
 
 
-
-
-    # Graph to plot median runtimes 
-
-    # Create two lists for each k group
-    k10 = []
-    med_k10 = []
-    k_square = []
-    med_k_square = []
-
-    # Cycle through all results and separate them by k value
-    for row in cs_medians:
-        n_val = row[0]
-        k_val = row[1]
-        median_val = row[3]
-
-        if k_val == 10:
-            k10.append(n_val)
-            med_k10.append(median_val)
-        else:
-            k_square.append(n_val)
-            med_k_square.append(median_val)
-
-    # Make the graph
-    plt.figure(figsize = (6, 5))
-    plt.plot(k10, med_k10, marker = 'o', label = 'CountingSort (k=10)')
-    plt.plot(k_square, med_k_square, marker = 'o', label = 'CountingSort (k=n² or n)')
-
-    # Labels and title
-    plt.xlabel('Input Size (n)')
-    plt.ylabel('Median Runtime (ms)')
-    plt.title('Counting Sort Runtime (Milestone 2)')
-    plt.legend()
-    plt.grid(True)
-
-
-    plt.text(0.5, -0.25,
-             "For smaller k (k=10), runtime increases almost linearly with n.\n"
-             "For larger k (k=n² or n), runtime rises sharply due to the larger counting array.",
-             fontsize = 10, ha = 'center', va = 'center', transform=plt.gca().transAxes)
-
-    plt.tight_layout()
-    plt.show()
+  
 
 
 
