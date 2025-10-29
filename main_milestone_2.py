@@ -56,14 +56,14 @@ def main():
         # Three different values for k: 10, n, n²
         k_10 = 10
         k_n = size
-        k_n2 = size * size
+        k_n_squared = size * size
 
         # Cap k if it exceeds the limit
-        if k_n2 > 1_000_000:
-            print(f"  (Capped k² at 1,000,000 for n = {size})")
-            k_n2 = 1_000_000
+        if k_n_squared > 1_000_000:
+            print(f"  (Capped k squared at 1,000,000 for n = {size})")
+            k_n_squared = 1_000_000
 
-        k_values = [k_10, k_n, k_n2]
+        k_values = [k_10, k_n, k_n_squared]
 
 
         # Run the experiments for each k value
@@ -122,10 +122,63 @@ def main():
         print("{:>8}  {:>12}  {:<24}  {:>12.3f}".format(n_val, k_val, algo, med))
 
 
+
+    # Graph 1 k = 10 
+    plt.figure(figsize = (6, 5))
+    plt.plot(n_k10, med_k10, marker = 'o', label = 'CountingSort (k = 10)')
+    plt.xlabel('Input Size (n)')
+    plt.ylabel('Median Runtime (ms)')
+    plt.title('k = 10')
+    plt.legend()
+    plt.grid(True)
+
+    # Note on the plot
+    plt.text(0.5, -0.22,
+             "For k = 10, runtime grows almost linearly with n (O(n + k) = O(n)).",
+             fontsize = 9, ha = 'center', va = 'center', transform = plt.gca().transAxes)
+    plt.tight_layout()
+    plt.show()
+
+
+
+    # Graph 2 k = n 
+    plt.figure(figsize = (6, 5))
+    plt.plot(n_kn, med_kn, marker = 'o', label = 'CountingSort (k = n)')
+    plt.xlabel('Input Size (n)')
+    plt.ylabel('Median Runtime (ms)')
+    plt.title('k = n')
+    plt.legend()
+    plt.grid(True)
+
+    # Note on the plot
+    plt.text(0.5, -0.22,
+             "For k=n, runtime increases faster than for k=10\n"
+             "because the counting array grows with n.",
+             fontsize = 9, ha = 'center', va = 'center', transform = plt.gca().transAxes)
+    plt.tight_layout()
+    plt.show()
+
+
+
+
+    # Graph 3 k = n squared
+    plt.plot(n_k2, med_k2, marker = 'o', label = 'CountingSort (k = n squared)')
+    plt.xlabel('Input Size (n)')
+    plt.ylabel('Median Runtime (ms)')
+    plt.title('k = n squared')
+    plt.legend()
+    plt.grid(True)
+
+    # Note on the plot
+    plt.text(0.5, -0.28,
+             "For k=n squared, runtime is dominated by k due to the large counting array.\n"
+             "Note: For large n, k squared values above 1,000,000 were capped to avoid memory issues.",
+             fontsize = 9, ha = 'center', va = 'center', transform = plt.gca().transAxes)
+    plt.tight_layout()
+    plt.show()
+
+
   
-
-
-
 def TestMe_counting_sort():
     """
     @brief Test function for verifying Counting Sort.
